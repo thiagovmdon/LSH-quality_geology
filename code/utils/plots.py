@@ -158,7 +158,7 @@ def generate_legend_and_color_mapping(variable_name, color_categories, xmin_hist
     elif color_palette == 'custom':
         # Define your custom color palette here
         color_mapping = {
-            f"{category[0]}-{category[1]}": ['#ffffcc', '#fdcc8a', '#fc8d59', '#d7301f', '#990000'][i] for i, category in enumerate(color_categories)
+            f"{category[0]}-{category[1]}": ['bisque', '#fdcc8a', '#fc8d59', '#d7301f', '#990000'][i] for i, category in enumerate(color_categories)
              #color_mapping[f"{category[0]}-{category[1]}"] = ['#ffbb78', '#ff7f0e', '#aec7e8', '#1f77b4', '#9467bd'][i] # This is from orange to purple
 
         }
