@@ -140,3 +140,40 @@ def find_directly_connected_catchments(df, starting_catchment):
     
     return connected_rows
 
+def find_max_unique_rows(df):
+    """
+    Identify rows with the maximum number of values that are unique, i.e., not repeated in other rows.
+
+    Parameters:
+        df (DataFrame): The DataFrame containing rows with lists of values.
+
+    Returns:
+        list: A list of indices of rows with the maximum number of unique values.
+    """
+    max_unique_rows = []  # List to store indices of rows with the maximum unique values
+    col_name = df.columns[0]  # Assume the values are in the first column
+
+    # Loop through each row in the DataFrame
+    for index, row in df.iterrows():
+        current_row_values = row[col_name]  # Extract values for the current row
+        max_unique_count = len(current_row_values)  # Initialize max count with the current row's values count
+        
+        # Loop through other rows to find overlaps
+        for other_index, other_row in df.iterrows():
+            if index != other_index:  # Skip comparing the row to itself
+                other_row_values = other_row[col_name]  # Extract values for the other row
+
+                # Find common values between current and other rows
+                intersection = set(current_row_values).intersection(other_row_values)
+                
+                # Update max count if the other row has more values and overlaps with the current row
+                if intersection:
+                    other_row_count = len(other_row_values)
+                    if other_row_count > max_unique_count:
+                        max_unique_count = other_row_count
+        
+        # Add current row index if its value count matches the maximum found
+        if len(current_row_values) == max_unique_count:
+            max_unique_rows.append(index)
+    
+    return max_unique_rows
