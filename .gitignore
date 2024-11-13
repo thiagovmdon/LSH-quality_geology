@@ -16,3 +16,5 @@ bin/
 data/
 *.joblib
 *.pptx
+results/
+code/bin/
