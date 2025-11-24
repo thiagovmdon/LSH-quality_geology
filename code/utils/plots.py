@@ -411,8 +411,8 @@ def plot_watershed_groups_from_dict(estreams_attributes_used, title_plot="Plot t
     """
     
     # Load the world shapefile dataset provided by GeoPandas
-    gdf = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-
+    #gdf = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+    gdf = gpd.read_file(r"/Users/nascimth/Documents/data/gis/world.shp")
     # Set font properties using rcParams
     mpl.rcParams['font.family'] = 'arial'  # Change the font family
     mpl.rcParams['font.size'] = 8            # Change the font size
